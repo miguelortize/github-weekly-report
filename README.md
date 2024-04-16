@@ -28,3 +28,14 @@ docker push miguelcontainertest.azurecr.io/azurefunctionsimage:v1.0.0
 
 Test:
 https://us-central1-test-project-miguel.cloudfunctions.net/pull-request-summary?user=kubernetes&repo=kubernetes
+
+Permission management:
+```
+PROJECT_NAME=test-project-miguel
+PROJECT_ID=105688756382
+GCP_SERVICE_ACCOUNT=wip-service-account
+gcloud iam service-accounts add-iam-policy-binding "${GCP_SERVICE_ACCOUNT}@${PROJECT_NAME}.iam.gserviceaccount.com" \
+  --project="${PROJECT_NAME}" \
+  --role="roles/iam.workloadIdentityUser" \
+  --member="principalSet://iam.googleapis.com/projects/${PROJECT_ID}/locations/global/workloadIdentityPools/liatrio-xyz-poc/attribute.repository/miguelortize/github-weekly-report"
+```
