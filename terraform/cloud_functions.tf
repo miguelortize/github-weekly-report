@@ -1,33 +1,59 @@
 provider "google" {
-  project     = "test-project-miguel"
-  region      = "us-central1"
+  project = var.project
+  region  = var.region
 }
 
-data "google_sourcerepo_repository" "github_mirror" {
-  name = "github_miguelortize_github-weekly-report"
+resource "google_project_iam_member" "secret_accessor" {
+  project = var.project
+  role    = "roles/secretmanager.secretAccessor"
+  member  = "serviceAccount:${var.service_account}"
 }
+
 
 resource "google_cloudfunctions_function" "pull_request_summary" {
-  name        = "pull-request-summary"
+  depends_on  = [google_project_iam_member.secret_accessor]
+  name        = var.cloud_function_name
   description = "Summarizes pull requests for a given GitHub repository."
   runtime     = "python312"
 
-  available_memory_mb   = 256
+  available_memory_mb = 256
   source_repository {
-    url = data.google_sourcerepo_repository.github_mirror.url
+    url = "https://source.developers.google.com/projects/test-project-miguel/repos/github_miguelortize_github-weekly-report/moveable-aliases/main/paths/python_functions/github_weekly_report"
   }
-  entry_point       = "pull_requests_summary"
-  trigger_http      = true
+  entry_point                  = "pull_requests_summary"
+  trigger_http                 = true
+  https_trigger_security_level = "SECURE_ALWAYS"
+  timeout                      = 200
 
   environment_variables = {
-    GITHUB_TOKEN = "<YOUR-GITHUB-TOKEN>"
-    EMAIL_FROM   = "notifications@example.com"
-    EMAIL_TO     = "developer@example.com"
+    EMAIL_FROM = var.email_from
+    EMAIL_TO   = var.email_to
+  }
+
+  secret_environment_variables {
+    key     = "GITHUB_TOKEN"
+    secret  = "github-token"
+    version = 1
   }
 
   timeouts {
-    create = "60s"
-    update = "60s"
-    delete = "60s"
+    create = "200s"
+    update = "200s"
+    delete = "200s"
   }
+  max_instances = 1 # Set the maximum number of instances
+
+}
+
+resource "google_cloudfunctions_function_iam_member" "public_invoker" {
+  project        = google_cloudfunctions_function.pull_request_summary.project
+  region         = google_cloudfunctions_function.pull_request_summary.region
+  cloud_function = google_cloudfunctions_function.pull_request_summary.name
+
+  role   = "roles/cloudfunctions.invoker"
+  member = "allUsers"
+}
+
+output "https_trigger_url" {
+  value = google_cloudfunctions_function.pull_request_summary.https_trigger_url
 }

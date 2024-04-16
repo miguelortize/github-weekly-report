@@ -1,6 +1,7 @@
 # github-weekly-report
 Project created with the purpose to create Github Reports.
 
+We created the secret manually in order to avoid interpolation of code/vs human intervention and to avoid security issues while allowing to run terraform locally as long as the GCP credentials exist.
 
 az login:
 
@@ -26,4 +27,4 @@ docker push miguelcontainertest.azurecr.io/azurefunctionsimage:v1.0.0
 
 
 Test:
-https://us-central1-test-project-miguel.cloudfunctions.net/function-1?user=kubernetes&repo=kubernetes
+https://us-central1-test-project-miguel.cloudfunctions.net/pull-request-summary?user=kubernetes&repo=kubernetes
