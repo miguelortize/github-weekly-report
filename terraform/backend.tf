@@ -3,4 +3,4 @@ terraform {
     bucket = "github-reports"
     prefix = "terraform/state"
   }
-} 
+}
