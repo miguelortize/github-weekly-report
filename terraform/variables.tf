@@ -33,3 +33,15 @@ variable "service_account" {
   description = "The email of the service account used by the Cloud Function."
   default     = "test-project-miguel@appspot.gserviceaccount.com"
 }
+
+variable "repo_name" {
+  type        = string
+  description = "The name of the Cloud Source Repository."
+  default     = "github_miguelortize_github-weekly-report"
+}
+
+variable "repo_path" {
+  type        = string
+  description = "The path to the source code in the Cloud Source Repository."
+  default     = "python_functions/github_weekly_report"
+}

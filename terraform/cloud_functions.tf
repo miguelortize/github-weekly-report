@@ -18,7 +18,7 @@ resource "google_cloudfunctions_function" "pull_request_summary" {
 
   available_memory_mb = 256
   source_repository {
-    url = "https://source.developers.google.com/projects/test-project-miguel/repos/github_miguelortize_github-weekly-report/moveable-aliases/main/paths/python_functions/github_weekly_report"
+    url = "https://source.developers.google.com/projects/test-project-miguel/repos/${var.repo_name}/moveable-aliases/main/paths/${var.repo_path}"
   }
   entry_point                  = "pull_requests_summary"
   trigger_http                 = true
