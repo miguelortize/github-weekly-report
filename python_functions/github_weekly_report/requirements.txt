@@ -1,0 +1,11 @@
+# For making HTTP requests to the GitHub API
+requests
+
+# If using Google's email services or any Google Cloud specific libraries (optional, depending on your email sending method)
+google-cloud-storage
+google-api-python-client
+
+# For advanced date handling, if needed
+python-dateutil
+
+simplejson==3.17.2
