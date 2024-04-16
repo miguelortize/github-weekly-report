@@ -37,9 +37,9 @@ resource "google_cloudfunctions_function" "pull_request_summary" {
   }
 
   timeouts {
-    create = "200s"
-    update = "200s"
-    delete = "200s"
+    create = "150s"
+    update = "150s"
+    delete = "150s"
   }
   max_instances = 1 # Set the maximum number of instances
 
