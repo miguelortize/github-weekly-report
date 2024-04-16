@@ -8,8 +8,6 @@ from google.cloud import functions_v1
 def pull_requests_summary(request):
     # Configurations
     github_token = os.environ.get('GITHUB_TOKEN')  # GitHub personal access token
-    # github_user = os.environ.get('GITHUB_USER')    # GitHub username
-    # repo_name = os.environ.get('REPO_NAME')        # Repository name e.g., 'kubernetes/kubernetes'
     email_from = os.environ.get('EMAIL_FROM')      # Email sender address
     email_to = os.environ.get('EMAIL_TO')          # Email recipient address
 
