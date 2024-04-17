@@ -22,7 +22,7 @@ resource "google_cloudfunctions_function" "pull_request_summary" {
   }
   entry_point                  = "pull_requests_summary"
   trigger_http                 = true
-  https_trigger_security_level = "SECURE_ALWAYS"
+  https_trigger_security_level = "SECURE_OPTIONAL"
   timeout                      = 200
 
   environment_variables = {

@@ -9,10 +9,10 @@ on:
 jobs:
   call-cloud-function:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_USER: kubernetes
-      GITHUB_REPO: kubernetes
     steps:
-    - name: Call Google Cloud Function
+    - name: Generate kubernetes/kubernetes pull request summary
+      env:
+        GITHUB_USER: kubernetes
+        GITHUB_REPO: kubernetes
       run: |
         curl -X GET "https://us-central1-test-project-miguel.cloudfunctions.net/pull-request-summary?user=${{ env.GITHUB_USER }}&repo=${{ env.GITHUB_REPO }}"

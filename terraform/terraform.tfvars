@@ -1,0 +1,8 @@
+project             = "test-project-miguel"
+region              = "us-central1"
+cloud_function_name = "pull-request-summary"
+email_from          = "notifications@example.com"
+email_to            = "developer@example.com"
+service_account     = "test-project-miguel@appspot.gserviceaccount.com"
+repo_name           = "github_miguelortize_github-weekly-report"
+repo_path           = "python_functions/github_weekly_report"
