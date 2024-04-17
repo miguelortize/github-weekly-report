@@ -14,7 +14,7 @@ This project is fully automated through [Github Actions Cronjobs](https://github
 
 ![](img/run-workflow.png)
 
-This workflow will deploy and use a `GITHUB_USER` and a `GITHUB_REPO`, if you wish to change these values, you can do it direclty by creating a PR and modifying the values at `.github/workflows/function_scheduler`.
+This workflow will deploy and use a `GITHUB_USER` and a `GITHUB_REPO`, if you wish to change these values, you can do it direclty by creating a PR and modifying the values at the [Github Actions Function Scheduler](https://github.com/miguelortize/github-weekly-report/blob/main/.github/workflows/function_scheduler.yml) `.github/workflows/function_scheduler`.
 
 The same way, if you want to add more weekly tests, you can append a new step and add your own GITHUB_USER and GITHUB_REPO:
 
