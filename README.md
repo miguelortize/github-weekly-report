@@ -10,7 +10,7 @@ Open your browser and go to https://us-central1-test-project-miguel.cloudfunctio
 
 ![](img/easy-test.png)
 
-This project is fully automated and does not require human intervention to run weekly reports, however, if it is necessary, users can test directly through [workflow_dispatch](https://github.com/miguelortize/github-weekly-report/actions/workflows/function_scheduler.yml), or going directly to `Actions` > `Weekly Pull Request Summary` > `Run Workflow`, choose main and execute the workflow.
+This project is fully automated through (Github Actions Cronjobs)[https://github.com/miguelortize/github-weekly-report/blob/main/.github/workflows/function_scheduler.yml] and does not require human intervention to run weekly reports, however, if it is necessary, users can test directly through [workflow_dispatch](https://github.com/miguelortize/github-weekly-report/actions/workflows/function_scheduler.yml), or going directly to `Actions` > `Weekly Pull Request Summary` > `Run Workflow`, choose main and execute the workflow.
 
 ![](img/run-workflow.png)
 
