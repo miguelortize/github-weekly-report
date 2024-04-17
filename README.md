@@ -28,9 +28,6 @@ The same way, if you want to add more weekly tests, you can append a new step an
         curl -X GET "https://us-central1-test-project-miguel.cloudfunctions.net/pull-request-summary?user=${{ env.GITHUB_USER }}&repo=${{ env.GITHUB_REPO }}"
 ```
 
-> [!IMPORTANT]  
-> Only Platform Administrators can change the email_from and email_to values.
-
 To change the email_from and email_to values, this has to be done at `terraform/terraform.tfvars`
 
 ```hcl
@@ -38,6 +35,9 @@ To change the email_from and email_to values, this has to be done at `terraform/
 email_from = "foo@example.com"
 email_to   = "bar@example.com"
 ```
+
+> [!IMPORTANT]  
+> Only Platform Administrators can change the email_from and email_to values.
 
 # Resource Deploment Strategy
 
